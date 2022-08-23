@@ -3,36 +3,36 @@ const config = require('./config.js');
 
 const Twitter = new twit(config);
 
-var bot = function() {
+var retweet = function() {
     var params = {
-        q: '#nisharrk',  
-        result_type: 'recent',
+        q: '#elonmusk', 
         lang: 'en'
     }
     
     Twitter.get('search/tweets', params, function(err, data) {
         if (!err) {
-            var retweetId = data.statuses[0].id_str;
-            Twitter.post('statuses/retweet/:id', {
-                id: retweetId
-            }, function(err, response) {
-                if (response) {
-                    console.log('Retweeted: ', retweetId);
-                }
-                if (err) {
-                    console.log('ERROR Retweeting: ', err);
-                }
-            });
+            var tweets = data.statuses;
+            for (let i of tweets) {
+                Twitter.post('statuses/retweet/:id', {
+                    id: i.id_str
+                }, function(err, response) {
+                    if (response) {
+                        console.log('Retweeted: ',i.id_str);
+                    }
+                    if (err) {
+                        console.log('Error Retweeting: ', err);
+                    }
+                });
+            }
         }
         else {
-          console.log('ERROR Searching: ', err);
+          console.log('Error searching tweets: ', err);
         }
     });
 }
 
-console.log('Bot running...');
-bot();
-setInterval(bot, 1000);
+retweet();
+setInterval(retweet, 10000);
 
 
 // function getTweets(){

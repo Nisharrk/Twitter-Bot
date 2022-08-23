@@ -17,19 +17,20 @@ var bot = function() {
                 id: retweetId
             }, function(err, response) {
                 if (response) {
-                    console.log('Retweeted!!!');
+                    console.log('Retweeted: ', retweetId);
                 }
                 if (err) {
-                    console.log('Something went wrong while RETWEETING... Duplication maybe...');
+                    console.log('ERROR Retweeting: ', err);
                 }
             });
         }
         else {
-          console.log('Something went wrong while SEARCHING...');
+          console.log('ERROR Searching: ', err);
         }
     });
 }
 
+console.log('Bot running...');
 bot();
 setInterval(bot, 1000);
 

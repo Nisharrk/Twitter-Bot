@@ -1,0 +1,15 @@
+{
+  "name": "twitter-bot",
+  "version": "1.0.0",
+  "description": "A bot for twitter",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Nisharrk",
+  "license": "ISC",
+  "dependencies": {
+    "twit": "^2.2.11",
+    "twitter-api-v2": "^1.12.5"
+  }
+}

@@ -14,6 +14,7 @@ var retweet = function() {
     Twitter.get('search/tweets', params, function(err, data) {
         if (!err) {
             var tweets = data.statuses;
+            console.log("Tweets found: " + tweets.length);
 
             // loop through the returned tweets
             for (let i of tweets) {
@@ -37,7 +38,7 @@ var retweet = function() {
 
 // grab & retweet as soon as program is running...
 retweet();
-setInterval(retweet, 60000); // retweet every minute
+setInterval(retweet, 1000); // retweet every 1 minute
 
 
 
